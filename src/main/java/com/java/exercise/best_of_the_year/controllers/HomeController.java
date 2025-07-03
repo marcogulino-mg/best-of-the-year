@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 // INFO: This element is a Controller
 @Controller
@@ -17,4 +16,5 @@ public class HomeController {
         model.addAttribute("name", "Marco");
         return "index";
     }
+
 }
