@@ -8,7 +8,7 @@ public class Song {
     // INFO: Methods
     // INFO: Constructors
 
-    Song(int id, String title){
+    public Song(int id, String title){
         id = this.id;
         title = this.title;
     }

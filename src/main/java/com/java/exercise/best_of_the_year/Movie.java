@@ -8,7 +8,7 @@ public class Movie {
     // INFO: Methods
     // INFO: Constructors
 
-    Movie(int id, String title){
+    public Movie(int id, String title){
         id = this.id;
         title = this.title;
     }
