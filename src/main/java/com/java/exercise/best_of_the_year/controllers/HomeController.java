@@ -1,6 +1,8 @@
 package com.java.exercise.best_of_the_year.controllers;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,22 @@ public class HomeController {
     public String home(Model model){
         model.addAttribute("name", "Marco");
         return "index";
+    }
+
+    @GetMapping("/movies")
+    public String movies(Model model) {
+        ArrayList<Movie> movies = getBestMovies();
+        String movieTitles = movies.toString();
+        model.addAttribute("movieList", movieTitles);
+        return "movies";
+    }
+
+    @GetMapping("/songs")
+    public String songs(Model model) {
+        ArrayList<Song> songs = getBestSongs();
+        String songTitles = songs.toString();
+        model.addAttribute("songList", songTitles);
+        return "songs";
     }
 
     // EXPLANATION: Return an ArrayList of Movie

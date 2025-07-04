@@ -9,8 +9,8 @@ public class Song {
     // INFO: Constructors
 
     public Song(int id, String title){
-        id = this.id;
-        title = this.title;
+        this.id = id;
+        this.title = title;
     }
 
     // INFO: Getters
@@ -29,5 +29,11 @@ public class Song {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    // INFO: Others Mehtods
+    @Override
+    public String toString() {
+        return String.format("%s", this.title);
     }
 }
