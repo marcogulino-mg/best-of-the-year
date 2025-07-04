@@ -1,12 +1,11 @@
 package com.java.exercise.best_of_the_year.controllers;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.java.exercise.best_of_the_year.Movie;
@@ -32,6 +31,17 @@ public class HomeController {
         return "movies";
     }
 
+    @GetMapping("/movies/{id}")
+    public String getMovieByID(@PathVariable int id, Model model) {
+        ArrayList<Movie> movies = getBestMovies();
+        String movie = movies.stream().filter(m->m.getId() == id)
+        .map(Movie::getTitle)
+        .findFirst()
+        .orElse(null);
+        model.addAttribute("movie", movie);
+        return "movie-id";
+    }
+
     @GetMapping("/songs")
     public String songs(Model model) {
         ArrayList<Song> songs = getBestSongs();
@@ -40,6 +50,17 @@ public class HomeController {
         return "songs";
     }
 
+    @GetMapping("/songs/{id}")
+        public String getSongByID(@PathVariable int id, Model model) {
+            ArrayList<Song> songs = getBestSongs();
+            String song = songs.stream().filter(s->s.getId() == id)
+            .map(Song::getTitle)
+            .findFirst()
+            .orElse(null);
+            model.addAttribute("song", song);
+            return "song-id";
+    }
+    
     // EXPLANATION: Return an ArrayList of Movie
     private ArrayList<Movie> getBestMovies(){
         ArrayList<Movie> movieList = new ArrayList<>();
