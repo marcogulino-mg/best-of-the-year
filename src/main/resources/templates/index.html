@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-</head>
-<body>
+  <head>
+    <th:block th:replace="~{ fragments :: generic-head(HomePage) }"></th:block>
+  </head>
+
+  <body>
+    <th:block th:replace="~{ fragments :: header-page }"></th:block>
     <h1 th:text="|Test of the Year by ${name}|"></h1>
-</body>
+  </body>
 </html>

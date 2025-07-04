@@ -4,11 +4,11 @@ public class Song {
     // INFO: Attributes
     private int id;
     private String title;
-    
+
     // INFO: Methods
     // INFO: Constructors
 
-    public Song(int id, String title){
+    public Song(int id, String title) {
         this.id = id;
         this.title = title;
     }

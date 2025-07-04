@@ -18,7 +18,7 @@ public class HomeController {
 
     // EXPLANATION: Reply to the root address with index.html
     @GetMapping("/")
-    public String home(Model model){
+    public String home(Model model) {
         model.addAttribute("name", "Marco");
         return "index";
     }
@@ -26,18 +26,17 @@ public class HomeController {
     @GetMapping("/movies")
     public String movies(Model model) {
         ArrayList<Movie> movies = getBestMovies();
-        String movieTitles = movies.toString();
-        model.addAttribute("movieList", movieTitles);
+        model.addAttribute("movieList", movies);
         return "movies";
     }
 
     @GetMapping("/movies/{id}")
     public String getMovieByID(@PathVariable int id, Model model) {
         ArrayList<Movie> movies = getBestMovies();
-        String movie = movies.stream().filter(m->m.getId() == id)
-        .map(Movie::getTitle)
-        .findFirst()
-        .orElse(null);
+        String movie = movies.stream().filter(m -> m.getId() == id)
+                .map(Movie::getTitle)
+                .findFirst()
+                .orElse(null);
         model.addAttribute("movie", movie);
         return "movie-id";
     }
@@ -45,24 +44,23 @@ public class HomeController {
     @GetMapping("/songs")
     public String songs(Model model) {
         ArrayList<Song> songs = getBestSongs();
-        String songTitles = songs.toString();
-        model.addAttribute("songList", songTitles);
+        model.addAttribute("songList", songs);
         return "songs";
     }
 
     @GetMapping("/songs/{id}")
-        public String getSongByID(@PathVariable int id, Model model) {
-            ArrayList<Song> songs = getBestSongs();
-            String song = songs.stream().filter(s->s.getId() == id)
-            .map(Song::getTitle)
-            .findFirst()
-            .orElse(null);
-            model.addAttribute("song", song);
-            return "song-id";
+    public String getSongByID(@PathVariable int id, Model model) {
+        ArrayList<Song> songs = getBestSongs();
+        String song = songs.stream().filter(s -> s.getId() == id)
+                .map(Song::getTitle)
+                .findFirst()
+                .orElse(null);
+        model.addAttribute("song", song);
+        return "song-id";
     }
-    
+
     // EXPLANATION: Return an ArrayList of Movie
-    private ArrayList<Movie> getBestMovies(){
+    private ArrayList<Movie> getBestMovies() {
         ArrayList<Movie> movieList = new ArrayList<>();
 
         movieList.add(new Movie(1, "Il Signore degli Anelli"));
@@ -74,7 +72,7 @@ public class HomeController {
     }
 
     // EXPLANATION: Return an ArrayList of Song
-    private ArrayList<Song> getBestSongs(){
+    private ArrayList<Song> getBestSongs() {
         ArrayList<Song> songList = new ArrayList<>();
 
         songList.add(new Song(1, "Like a Rolling Stone"));
