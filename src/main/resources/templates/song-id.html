@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
-    <th:block th:replace="~{ fragments :: generic-head(${song}) }"></th:block>
+    <th:block
+      th:replace="~{ fragments :: generic-head(title=${song}) }"
+    ></th:block>
   </head>
   <body>
     <th:block th:replace="~{ fragments :: header-page }"></th:block>

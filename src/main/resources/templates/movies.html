@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
-    <th:block th:replace="~{ fragments :: generic-head(Movies) }"></th:block>
+    <th:block
+      th:replace="~{ fragments :: generic-head(title='Movies') }"
+    ></th:block>
   </head>
   <body>
     <th:block th:replace="~{ fragments :: header-page }"></th:block>
     <h1>Movies of the Year</h1>
-    <ul>
-      <li th:each="movie : ${movieList}">
-        <a th:href="@{|/movies/${movie.id}|}" th:text="${movie.title}"></a>
-      </li>
-    </ul>
+    <th:block
+      th:replace="~{fragments :: list(media=${movieList}, url='movies')}"
+    ></th:block>
   </body>
 </html>
